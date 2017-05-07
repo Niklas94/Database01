@@ -40,12 +40,10 @@ public class MySQLProduktBatchDAO implements ProduktBatchDAO{
 
 	@Override
 	public void createProduktBatch(ProduktBatchDTO produktbatch) throws DALException {
-		// TODO Auto-generated method stub
 		Connector.doUpdate(
 				"INSERT INTO PRODUKTBATCH(PB_ID, RECEPT_ID, STATUS) VALUES " +
 						"(" + produktbatch.getPbId() + ", '" + produktbatch.getReceptId() + "', '" + produktbatch.getStatus() + "')"
 				);
-		
 	}
 
 	@Override

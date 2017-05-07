@@ -47,7 +47,7 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 		{
 			while (rs.next()) 
 			{
-				list.add(new ProduktBatchKompDTO(rs.getInt("PB_ID"), rs.getInt("RB_ID"), rs.getInt("TARA"), rs.getDouble("NETTO"), rs.getInt("OPR_ID")));
+				list.add(new ProduktBatchKompDTO(rs.getInt("PB_ID"), rs.getInt("RB_ID"), rs.getDouble("TARA"), rs.getDouble("NETTO"), rs.getInt("OPR_ID")));
 			}
 		}
 		catch (SQLException e) { throw new DALException(e); }
@@ -58,16 +58,16 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 	public void createProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent) throws DALException {
 		Connector.doUpdate(
 				"INSERT INTO PRODUKTBATCHKOMP(PB_ID, RB_ID, TARA, NETTO, OPR_ID) VALUES " +
-						"(" + produktbatchkomponent.getPbId() + ", '" + produktbatchkomponent.getRbId() + "', '" + produktbatchkomponent.getTara() + 
-						"', '" + produktbatchkomponent.getNetto() + "', '" + produktbatchkomponent.getOprId()
+						"(" + produktbatchkomponent.getPbId() + ", " + produktbatchkomponent.getRbId() + ", " + produktbatchkomponent.getTara() + 
+						", " + produktbatchkomponent.getNetto() + ", " + produktbatchkomponent.getOprId() + ")"
 						);
 	}
 
 	@Override
 	public void updateProduktBatchKomp(ProduktBatchKompDTO produktbatchkomponent) throws DALException {
 		Connector.doUpdate(
-				"UPDATE PRODUKTBATCHKOMPONENT SET PB_ID = '" + produktbatchkomponent.getPbId() + "', RB_ID =  '" + produktbatchkomponent.getRbId() + 
-				"', TARA = '" + produktbatchkomponent.getTara() + "', NETTO = '" + produktbatchkomponent.getNetto() + "', OPR_ID = '" + produktbatchkomponent.getOprId() + "'  WHERE PB_ID = " +
+				"UPDATE PRODUKTBATCHKOMPONENT SET PB_ID = " + produktbatchkomponent.getPbId() + ", RB_ID =  " + produktbatchkomponent.getRbId() + 
+				", TARA = " + produktbatchkomponent.getTara() + ", NETTO = " + produktbatchkomponent.getNetto() + ", OPR_ID = " + produktbatchkomponent.getOprId() + "  WHERE PB_ID = " +
 				produktbatchkomponent.getPbId()
 		);
 	}

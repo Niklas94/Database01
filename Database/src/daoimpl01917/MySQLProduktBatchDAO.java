@@ -52,7 +52,7 @@ public class MySQLProduktBatchDAO implements ProduktBatchDAO{
 		Connector.doUpdate(
 				"UPDATE PRODUKTBATCH SET PB_ID = '" + produktbatch.getPbId() + "', RECEPT_ID =  '" + produktbatch.getReceptId() + 
 				"', STATUS = '" + produktbatch.getStatus() + "' WHERE PB_ID = " +
-				produktbatch.getPbId()
+				produktbatch.getPbId() + "')"
 		);
 	}
 

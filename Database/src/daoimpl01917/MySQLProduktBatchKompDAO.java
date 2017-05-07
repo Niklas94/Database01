@@ -59,7 +59,7 @@ public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {
 		Connector.doUpdate(
 				"INSERT INTO PRODUKTBATCHKOMP(PB_ID, RB_ID, TARA, NETTO, OPR_ID) VALUES " +
 						"(" + produktbatchkomponent.getPbId() + ", '" + produktbatchkomponent.getRbId() + "', '" + produktbatchkomponent.getTara() + 
-						"', '" + produktbatchkomponent.getNetto() + "', '" + produktbatchkomponent.getOprId()
+						"', '" + produktbatchkomponent.getNetto() + "', '" + produktbatchkomponent.getOprId() + "')"
 						);
 	}
 

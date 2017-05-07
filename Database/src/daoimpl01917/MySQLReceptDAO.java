@@ -11,7 +11,7 @@ import dto01917.ReceptDTO;
 
 import daointerfaces01917.ReceptDAO;
 
-public class MySQLRecept  implements ReceptDAO {
+public class MySQLReceptDAO  implements ReceptDAO {
 
 
 	@Override
@@ -35,7 +35,7 @@ public class MySQLRecept  implements ReceptDAO {
 	public void createRecept(ReceptDTO recept) throws DALException {
 		// TODO Auto-generated method stub		
 		Connector.doUpdate(
-				"INSTER INTO RECEPT(RECEPT_ID, RAAVARE_ID, MAENGDE) values" + 
+				"INSERT INTO RECEPT(RECEPT_ID, RECEPT_NAVN) values" + 
 						"(" + recept.getReceptId() + ", '" + 
 						recept.getReceptNavn() + "')" 
 				);						
@@ -48,14 +48,14 @@ public class MySQLRecept  implements ReceptDAO {
 		Connector.doUpdate(
 				"UPDATE RECEPT SET RECEPT_ID = " + 
 				recept.getReceptId() + ", RECEPT_NAVN = '" + 
-				recept.getReceptNavn() + "'");
+				recept.getReceptNavn() + "'  WHERE RECEPT_ID = " + recept.getReceptId());
 	}
 
 	@Override
 	public ReceptDTO getRecept(int receptId) throws DALException {
 		// TODO Auto-generated method stub
 
-		ResultSet rs = Connector.doQuery("SETLECT * FROM RECEPT WHERE RECEPT_ID = " + receptId);
+		ResultSet rs = Connector.doQuery("SELECT * FROM RECEPT WHERE RECEPT_ID = " + receptId);
 		try {	    	
 			if (!rs.first()) throw new DALException("RECEPT" + receptId  + " findes ikke");
 			return new ReceptDTO (rs.getInt("recept_id"), rs.getString("recept_navn"));

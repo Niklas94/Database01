@@ -10,14 +10,14 @@ import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptKompDAO;
 import dto01917.ReceptKompDTO;
 
-public class MySQLReceptkomponent implements ReceptKompDAO {
+public class MySQLReceptKompDAO implements ReceptKompDAO {
 
 	@Override
 	public List<ReceptKompDTO> getReceptKompList(int receptId) throws DALException {
 		// TODO Auto-generated method stub
 		
 		List<ReceptKompDTO> list = new ArrayList<ReceptKompDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FORM RECEPTKOMPONENT WHERE RECEPT_ID = " + receptId);
+		ResultSet rs = Connector.doQuery("SELECT * FROM RECEPTKOMPONENT WHERE RECEPT_ID = " + receptId);
 		try
 		{
 			while (rs.next()) 
@@ -36,7 +36,7 @@ public class MySQLReceptkomponent implements ReceptKompDAO {
 	@Override
 	public ReceptKompDTO getReceptKomp(int receptId, int raavareId) throws DALException {
 		// TODO Auto-generated method stub
-		ResultSet rs = Connector.doQuery("SELECT * FROM RECEPTKOMPONENT WHERE RECEPT_ID = " + receptId + "AND RAAVARE_ID = " + raavareId);
+		ResultSet rs = Connector.doQuery("SELECT * FROM RECEPTKOMPONENT WHERE RECEPT_ID = " + receptId + " AND RAAVARE_ID = " + raavareId);
 		
 		try {	    	
 			if (!rs.first()) throw new DALException("RECEPTKOMPONENT " + receptId  + " findes ikke");
@@ -73,7 +73,7 @@ public class MySQLReceptkomponent implements ReceptKompDAO {
 		// TODO Auto-generated method stub
 		
 		Connector.doUpdate(
-				"INSERT INTO RECEPTKOMPONENT(RECEPT_ID, RAAVARE_ID, NOM_NETTO, TOLERANCE" +
+				"INSERT INTO RECEPTKOMPONENT(RECEPT_ID, RAAVARE_ID, NOM_NETTO, TOLERANCE) values " +
 				"(" + receptkomponent.getReceptId() + ", " + 
 				receptkomponent.getRaavareId() + ", " + 
 				receptkomponent.getNomNetto() + ", " +
@@ -86,8 +86,9 @@ public class MySQLReceptkomponent implements ReceptKompDAO {
 		Connector.doUpdate("UPDATE RECEPTKOMPONENT SET RECEPT_ID = " + 
 		receptkomponent.getReceptId() + ", RAAVARE_ID = " + 
 		receptkomponent.getRaavareId() + ", NOM_NETTO  = " + 
-		receptkomponent.getNomNetto() + ", TOLLERANCE = " + 
-		receptkomponent.getTolerance() );
+		receptkomponent.getNomNetto() + ", TOLERANCE = " + 
+		receptkomponent.getTolerance() +  "  WHERE RECEPT_ID = " +
+				receptkomponent.getReceptId() + " AND RAAVARE_ID = " + receptkomponent.getRaavareId() );
 	}
 
 }

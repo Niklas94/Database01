@@ -25,7 +25,7 @@ public class MySQLRaavareBatchDAO implements RaavareBatchDAO {
 	@Override
 	public List<RaavareBatchDTO> getRaavareBatchList() throws DALException {
 		List<RaavareBatchDTO> list = new ArrayList<RaavareBatchDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM PRODUKTBATCHKOMPONENT");
+		ResultSet rs = Connector.doQuery("SELECT * FROM RAAVAREBATCH");
 		try
 		{
 			while (rs.next()) 
@@ -41,7 +41,7 @@ public class MySQLRaavareBatchDAO implements RaavareBatchDAO {
 	public List<RaavareBatchDTO> getRaavareBatchList(int raavareId) throws DALException {
 		//TODO Same as MySQLProduktBatchKomp... return all RaavareBatches containing the specific raavareId???
 		List<RaavareBatchDTO> list = new ArrayList<RaavareBatchDTO>();
-		ResultSet rs = Connector.doQuery("SELECT * FROM PRODUKTBATCHKOMPONENT WHERE RAAVARE_ID = " + raavareId);
+		ResultSet rs = Connector.doQuery("SELECT * FROM RAAVAREBATCH WHERE RAAVARE_ID = " + raavareId);
 		try
 		{
 			while (rs.next()) 

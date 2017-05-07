@@ -8,8 +8,6 @@ import java.util.List;
 import connector01917.Connector;
 import daointerfaces01917.DALException;
 import daointerfaces01917.RaavareBatchDAO;
-import daointerfaces01917.RaavareDAO;
-import dto01917.ProduktBatchKompDTO;
 import dto01917.RaavareBatchDTO;
 
 public class MySQLRaavareBatchDAO implements RaavareBatchDAO {

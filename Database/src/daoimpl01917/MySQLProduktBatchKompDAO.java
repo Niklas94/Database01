@@ -8,7 +8,6 @@ import java.util.List;
 import connector01917.Connector;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ProduktBatchKompDAO;
-import dto01917.ProduktBatchDTO;
 import dto01917.ProduktBatchKompDTO;
 
 public class MySQLProduktBatchKompDAO implements ProduktBatchKompDAO {

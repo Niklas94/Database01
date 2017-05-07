@@ -8,7 +8,6 @@ import java.util.List;
 import connector01917.Connector;
 import daointerfaces01917.DALException;
 import daointerfaces01917.ReceptKompDAO;
-import dto01917.ReceptDTO;
 import dto01917.ReceptKompDTO;
 
 public class MySQLReceptkomponent implements ReceptKompDAO {
